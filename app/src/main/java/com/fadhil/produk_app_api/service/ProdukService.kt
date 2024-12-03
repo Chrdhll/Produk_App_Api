@@ -6,6 +6,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface ProdukService {
-    @GET("proudcts") //end point
-    fun getAllProduk() : Call<ResponseProduk>
+    @GET("products") //end point
+    fun getAllProduk(): retrofit2.Call<ResponseProduk>
 }
