@@ -1,5 +1,6 @@
 package com.fadhil.produk_app_api.adapter
 
+import android.content.Intent
 import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.fadhil.produk_app_api.DetailActivity
 import com.fadhil.produk_app_api.R
 import com.fadhil.produk_app_api.model.ModelProduk
 
@@ -61,7 +63,20 @@ class ProdukAdapter(
         val produk = getItem(position)
         holder.bind(produk)
 
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, DetailActivity::class.java).apply {
+                putExtra("title", produk.title)
+                putExtra("brand", produk.brand)
+                putExtra("description",produk.description)
+                putExtra("price", produk.price)
+                putExtra("thumbnail", produk.thumbnail)
+                putExtra("stok",produk.stock)
+            }
+            context.startActivity(intent)
+        }
     }
+
 }
 
 
